@@ -87,21 +87,91 @@ for i , j in df.iterrows():
     print("->>")
 
 # applying iteration overs the column
-dict21 = {
-    "Name":["Sunil","Harish","Arti","Suman","Khushboo"],
-    "degree":["Btech,Btech","7th","11th","10th"],
-    "score":[90,99,99,100,100]
-}
-print("the dictionary is ")
-print(dict21)
-df1 = pd.DataFrame(dict21)
-print("the dataframe is ")
-print(df1)
+# dict21 = {
+#     "Name":["Sunil","Harish","Arti","Suman","Khushboo"],
+#     "degree":["Btech,Btech","7th","11th","10th"],
+#     "score":[90,99,99,100,100]
+# }
+# print("the dictionary is ")
+# print(dict21)
+# df1 = pd.DataFrame(dict21)
+# print("the dataframe is ")
+# print(df1)
 
 #to iterate the dataframe over column first convert into the list 
-column = list(df1)
-print("the cloumn of the dataframe is ")
-print(column)
-for i in column:
-    print(df1[i])
-    print("****->*******")
+# column = list(df1)
+# print("the cloumn of the dataframe is ")
+# print(column)
+# for i in column:
+#     print(df1[i])
+#     print("****->*******")
+
+#concatenating DataFrame using concate()
+dict1 = {
+    "Name":["Jai","Princi","Gaurav","Anuj"],
+    "Age":[27,24,22,32],
+    "Address":["Nagpur","Kanpur","Alahabad","kannauj"],
+    "Qualifications":["Msc","MA","MCA","Phd"]
+}
+dict2 = {
+    "Name":["Abhi","Ayushi","Dhiraj","Hitesh"],
+    "Age":[17,14,12,52],
+    "Address":["Nagpur","Kanpur","Allahabad","Kannauj"],
+    "Qualification":["Btech","B.A","Bcom","B.hons"]
+}
+print("the data1 is ")
+print(dict1)
+print("the data2 is ")
+print(dict2)
+
+#now concatenating the two different data 
+
+#First convert into the dataFrame 
+df1 = pd.DataFrame(dict1,index=[0,1,2,3])
+print("the first DataFrame is ")
+print(df1)
+
+#Second convert into th dataFrame 
+df2 = pd.DataFrame(dict2,index=[4,5,6,7])
+print("the second dataFrame is ")
+print(df2)
+
+Frames = [df1,df2]
+res1 = pd.concat(Frames)
+print("after concatenation of the two data sets")
+print(res1)
+
+#Finding the intersection of the dataFrame 
+dict31 = {
+    "Name":["Jai","Princi","Gaurav","Anuj"],
+    "Age":[27,24,22,32],
+    "Address":["Nagpur","Kanpur","Allahabad","Kannauj"],
+    "Qualification":["MSc","MA","MCA","Phd"],
+    "Mobile No":[97,91,58,76]
+}
+
+dict32 = {
+    "Name":["Gaurav","Anuj","Dhiraj","Hitesh"],
+    "Age":[22,32,12,52],
+    "Address":["Allahabad","Kannauj","Allahabad","Kannauj"],
+    "Qualification":["MCA","Phd","Bcom","B.Hons"],
+    "salary":[1000,2000,3000,4000]
+}
+print("the first data sets is ")
+print(dict31)
+print("the second datasets is ")
+print(dict32)
+
+#converting the datasets into dataFrame from the dictinary
+df1 = pd.DataFrame(dict31,index=[0,1,2,3])
+print("the  first dataFrame is ")
+print(df1)
+df2 = pd.DataFrame(dict32,index=[2,3,6,7])
+print("the second dataFrame is ")
+print(df2)
+
+Frames1 = [df1,df2]
+print("the Frame1 is ")
+print(Frames1)
+res = pd.concat(Frames1,axis=1,join="inner")
+print(res)
